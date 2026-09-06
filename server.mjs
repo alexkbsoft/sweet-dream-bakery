@@ -226,10 +226,10 @@ app.use((req, res) => {
 async function start() {
   try {
     await initDB();
-    app.listen(PORT, () => {
-      console.log(`🚀 Сервер запущен: http://localhost:${PORT}`);
-      console.log(`📋 API: http://localhost:${PORT}/api/orders`);
-      console.log(`🔐 Админка: http://localhost:${PORT}/admin`);
+    app.listen(PORT, '127.0.0.1', () => {
+      console.log(`🚀 Сервер запущен: http://127.0.0.1:${PORT}`);
+      console.log(`📋 API: http://127.0.0.1:${PORT}/api/orders`);
+      console.log(`🔐 Админка: http://127.0.0.1:${PORT}/admin`);
     });
   } catch (error) {
     console.error('Не удалось запустить сервер:', error);
