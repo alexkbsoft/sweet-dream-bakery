@@ -10,8 +10,6 @@ import {
   colors,
 } from '../../data/cakes';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
 function OptionCard({ inputProps, children }) {
   return (
     <label className="option-card">
@@ -67,7 +65,7 @@ function Build() {
     setSubmitting(true);
 
     try {
-      const response = await fetch(`${API_URL}/api/orders`, {
+      const response = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

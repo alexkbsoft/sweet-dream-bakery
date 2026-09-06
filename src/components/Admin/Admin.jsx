@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import './Admin.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-
 // ==================== LOGIN PAGE ====================
 function LoginPage({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -16,7 +14,7 @@ function LoginPage({ onLogin }) {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_URL}/api/admin/login`, {
+      const res = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -89,7 +87,7 @@ function AdminPanel({ username, onLogout }) {
       });
       if (search) params.set('search', search);
 
-      const res = await fetch(`${API_URL}/api/admin/orders?${params}`, {
+      const res = await fetch(`/api/admin/orders?${params}`, {
         credentials: 'include',
       });
       const data = await res.json();
@@ -111,7 +109,7 @@ function AdminPanel({ username, onLogout }) {
 
   const handleComplete = async (id) => {
     try {
-      const res = await fetch(`${API_URL}/api/admin/orders/${id}/complete`, {
+      const res = await fetch(`/api/admin/orders/${id}/complete`, {
         method: 'PATCH',
         credentials: 'include',
       });
@@ -128,7 +126,7 @@ function AdminPanel({ username, onLogout }) {
     if (!confirm('Удалить этот заказ?')) return;
     setDeletingId(id);
     try {
-      const res = await fetch(`${API_URL}/api/admin/orders/${id}`, {
+      const res = await fetch(`/api/admin/orders/${id}`, {
         method: 'DELETE',
         credentials: 'include',
       });
@@ -328,7 +326,7 @@ function Admin() {
 
   useEffect(() => {
     // Check if already logged in
-    fetch(`${API_URL}/api/admin/auth`, { credentials: 'include' })
+    fetch('/api/admin/auth', { credentials: 'include' })
       .then((res) => res.json())
       .then((data) => {
         if (data.authenticated) {
@@ -346,7 +344,7 @@ function Admin() {
   };
 
   const handleLogout = async () => {
-    await fetch(`${API_URL}/api/admin/logout`, {
+    await fetch('/api/admin/logout', {
       method: 'POST',
       credentials: 'include',
     });
