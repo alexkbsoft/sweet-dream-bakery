@@ -1,0 +1,27 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero__content {
+  max-width: 800px;
+}
+
+.hero__title {
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: #ffffff;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
